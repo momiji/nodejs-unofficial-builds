@@ -20,6 +20,7 @@ recipes=" \
   riscv64 \
   arm64-musl \
 "
+recipes=$(ls ${__dirname}/../recipes/ | grep -v fetch)
 ccachedir=$(realpath "${workdir}/.ccache")
 stagingdir=$(realpath "${workdir}/staging")
 distdir=$(realpath "${workdir}/download")
