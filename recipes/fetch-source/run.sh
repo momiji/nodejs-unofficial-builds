@@ -18,8 +18,9 @@ gpg_keys=$(curl -sL https://raw.githubusercontent.com/nodejs/docker-node/HEAD/ke
 
 for key in ${gpg_keys}; do
   gpg --list-keys "$key" ||
-      gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys "$key" || \
-      gpg --batch --keyserver keyserver.ubuntu.com --recv-keys "$key" ; \
+      curl -fs "https://keys.openpgp.org/vks/v1/by-fingerprint/$key" -o "node-$key.asc" || \
+      curl -fs "http://keyserver.ubuntu.com/pks/lookup?op=get&search=$key" -o "node-$key.asc" ; \
+      gpg --batch --import "node-$key.asc" ; \
 done
 
 curl -fsSLO --compressed "$source_url"
