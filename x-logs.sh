@@ -4,4 +4,4 @@ cd "$(dirname "$0")"
 
 cd ..
 
-tail -f logs/*/*
+tail -f logs/$(ls logs/ | tail -1)/*

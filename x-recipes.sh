@@ -10,7 +10,11 @@ for recipe in $(ls recipes | grep -v fetch) ; do
 done
 
 # unhide chosen one
-while [ -n "${1-}" ]; do
-    recipe=$1
+recipes="$@"
+if [ "${1:-}" = "all" ]; then
+    recipes=$(ls recipes/.old/)
+fi
+
+for recipe in $recipes ; do
     [ -d recipes/.old/$recipe ] && mv recipes/.old/$recipe recipes/
 done
