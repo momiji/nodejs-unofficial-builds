@@ -17,24 +17,23 @@ To choose to build only recipe `x64-glibc-217`:
 $ ./x-recipes.sh x64-glibc-217
 ```
 
-To build only fetch image:
+To build docker images for choosed recipes, which name are all starting with `unofficial-build-recipe-`: 
 ```sh
-./x-prepare.sh
+$ ./x-prepare.sh
+```
+
+Now we should have 2 dockers images:
+- `unofficial-build-recipe-fetch-source:latest`
+- `unofficial-build-recipe-x64-glibc-217:latest`
+
+To start building nodejs `v18.14.2` for each choosen recipes:
+```sh
+$ ./x-build.sh v18.14.2
 ```
 
 To restore all recipes:
 ```sh
-./x-recipes.sh all
-```
-
-To build required docker images:
-```sh
-./x-prepare.sh
-```
-
-To start building nodejs `v18.14.2` for each choosen recipes:
-```sh
-./x-build.sh v18.14.2
+$ ./x-recipes.sh all
 ```
 
 ## Notes
