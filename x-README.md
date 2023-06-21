@@ -3,23 +3,39 @@
 Additionnal features:
 - add missing recipe: x64-glibc-217 [PR-69](https://github.com/nodejs/unofficial-builds/pull/69)
 - allow to build in place from a personal computer
-- allow to build behing corporate proxies
+- allow to build behind corporate proxies
 
-To choose which recipes to build:
-./x-recipes.sh recipe...
+To configure a proxy, simply set `http_proxy` and `https_proxy`:
+
+```sh
+$ export http_proxy=http://127.0.0.1:8888
+$ export https_proxy=http://127.0.0.1:8888
+```
+
+To choose to build only recipe `x64-glibc-217`:
+```sh
+$ ./x-recipes.sh x64-glibc-217
+```
 
 To build only fetch image:
-./x-recipes.sh
+```sh
 ./x-prepare.sh
+```
 
 To restore all recipes:
+```sh
 ./x-recipes.sh all
+```
 
-To build required docker images
+To build required docker images:
+```sh
 ./x-prepare.sh
+```
 
-To start building nodejs for each choosen recipes
+To start building nodejs `v18.14.2` for each choosen recipes:
+```sh
 ./x-build.sh v18.14.2
+```
 
 ## Notes
 
